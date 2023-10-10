@@ -43,15 +43,15 @@ const blogPostSchema = new mongoose.Schema(
 );
 
 
-// const BlogCategoryModel=mongoose.model("BlogCategory",blogCategorySchema)
-// const BlogPostModel = mongoose.model("BlogPost", blogPostSchema);
+const BlogCategoryModel=mongoose.model("BlogCategory",blogCategorySchema)
+const BlogPostModel = mongoose.model("BlogPost", blogPostSchema);
 
-// module.exports = {
-//   BlogCategory:BlogCategoryModel,
-//   BlogPost: BlogPostModel,
-// };
+module.exports = {
+  BlogCategory:BlogCategoryModel,
+  BlogPost: BlogPostModel,
+};
 
-module.exports={
-  BlogCategory:mongoose.model("BlogCategory",blogCategorySchema),
-  BlogPost:mongoose.model("BlogPost",blogPostSchema)
-}
+// module.exports={
+//   BlogCategory:mongoose.model("BlogCategory",blogCategorySchema),
+//   BlogPost:mongoose.model("BlogPost",blogPostSchema)
+// }

@@ -3,6 +3,8 @@ const router = require('express').Router()
 
 const { BlogCategory, BlogPost } = require("../controllers/blogController");
 
+//-------------BlogCategory----------------
+
 router.route("/category")
   .get(BlogCategory.list)
   .post(BlogCategory.create);
@@ -12,6 +14,7 @@ router.route("/category/:categoryId")
   .put(BlogCategory.update)
   .delete(BlogCategory.delete);
 
+//-------------BlogPost----------------
 
 router.route("/post")
   .get(BlogPost.list)

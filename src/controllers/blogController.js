@@ -8,13 +8,24 @@ const { BlogCategory, BlogPost } = require("../models/blogModel");
 //-------------BlogCategory----------------
 
 module.exports.BlogCategory = {
+  // list: async (req, res) => {
+  //   const data = await BlogCategory.find();
+
+  //   res.status(200).send({
+  //     error: false,
+  //     result: data,
+  //     count:data.length,
+  //   });
+  // },
+
   list: async (req, res) => {
     const data = await BlogCategory.find();
 
     res.status(200).send({
       error: false,
+      count: data.length,
       result: data,
-      count:data.length,
+      // body: req.body,
     });
   },
 
