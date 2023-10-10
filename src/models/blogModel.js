@@ -1,5 +1,21 @@
 const mongoose = require("mongoose");
 
+const blogCategorySchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+  },
+  {
+    collation: "blogCategories",
+    timestamps: true,
+  }
+);
+
+
+
 const blogPostSchema = new mongoose.Schema(
   {
     //id auto created
@@ -26,9 +42,16 @@ const blogPostSchema = new mongoose.Schema(
   }
 );
 
-const BlogPostModel = mongoose.model("BlogPost", blogPostSchema);
 
+// const BlogCategoryModel=mongoose.model("BlogCategory",blogCategorySchema)
+// const BlogPostModel = mongoose.model("BlogPost", blogPostSchema);
+
+// module.exports = {
+//   BlogCategory:BlogCategoryModel,
+//   BlogPost: BlogPostModel,
+// };
 
 module.exports={
-    BlogPost:BlogPostModel
+  BlogCategory:mongoose.model("BlogCategory",blogCategorySchema),
+  BlogPost:mongoose.model("BlogPost",blogPostSchema)
 }
