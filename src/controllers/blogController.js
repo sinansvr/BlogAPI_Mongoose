@@ -8,26 +8,27 @@ const { BlogCategory, BlogPost } = require("../models/blogModel");
 //-------------BlogCategory----------------
 
 module.exports.BlogCategory = {
+  list: async (req, res) => { 
+    const data = await BlogCategory.find({});
+
+    res.status(201).send({
+      error: false,
+      result: data,
+      count:data.length,
+      body:req.body
+    });
+  },
+
   // list: async (req, res) => {
   //   const data = await BlogCategory.find();
 
   //   res.status(200).send({
   //     error: false,
+  //     count: data.length,
   //     result: data,
-  //     count:data.length,
+      
   //   });
   // },
-
-  list: async (req, res) => {
-    const data = await BlogCategory.find();
-
-    res.status(200).send({
-      error: false,
-      count: data.length,
-      result: data,
-      // body: req.body,
-    });
-  },
 
   create: async (req, res) => {
     const data = await BlogCategory.create(req.body);
@@ -60,7 +61,7 @@ module.exports.BlogCategory = {
   },
 
   delete: async (req, res) => {
-    const data = await BlogCategory.deleteOne({ _id: params.categoryId });
+    const data = await BlogCategory.deleteOne({ _id: req.params.categoryId });
     
     res.sendStatus((data.deletedCount >= 1) ? 204 : 404);
   },
@@ -118,3 +119,4 @@ module.exports.BlogPost = {
     res.sendStatus((data.deletedCount >= 1) ? 204 : 404);
   },
 };
+
