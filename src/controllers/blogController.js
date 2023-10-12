@@ -2,33 +2,24 @@
 
 require("express-async-errors");
 
-const { BlogCategory, BlogPost } = require("../models/blogModel");
+const { BlogCategory , BlogPost } = require("../models/blogModel");
 
 
 //-------------BlogCategory----------------
 
 module.exports.BlogCategory = {
-  list: async (req, res) => { 
-    const data = await BlogCategory.find({});
 
-    res.status(201).send({
+  list: async (req, res) => {
+
+    const data = await BlogCategory.find();
+
+    res.status("200").send({
       error: false,
       result: data,
       count:data.length,
       body:req.body
     });
   },
-
-  // list: async (req, res) => {
-  //   const data = await BlogCategory.find();
-
-  //   res.status(200).send({
-  //     error: false,
-  //     count: data.length,
-  //     result: data,
-      
-  //   });
-  // },
 
   create: async (req, res) => {
     const data = await BlogCategory.create(req.body);

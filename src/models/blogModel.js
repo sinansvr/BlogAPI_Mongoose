@@ -9,17 +9,20 @@ const blogCategorySchema = new mongoose.Schema(
     },
   },
   {
-    collation: "blogCategories",
+    collection: "blogCategories",
     timestamps: true,
   }
 );
 
-
+const newSchema = new mongoose.Schema({},{})
 
 const blogPostSchema = new mongoose.Schema(
   {
-    //id auto created
-
+    blogCategoryId:{
+      type:mongoose.Schema.ObjectId,
+      ref:"BlogCategory",
+      required:true
+    },
     title: {
       type: String,
       trim: true,
@@ -43,15 +46,15 @@ const blogPostSchema = new mongoose.Schema(
 );
 
 
-const BlogCategoryModel=mongoose.model("BlogCategory",blogCategorySchema)
-const BlogPostModel = mongoose.model("BlogPost", blogPostSchema);
+// const BlogCategoryModel=mongoose.model("BlogCategory",blogCategorySchema)
+// const BlogPostModel = mongoose.model("BlogPost", blogPostSchema);
 
-module.exports = {
-  BlogCategory:BlogCategoryModel,
-  BlogPost: BlogPostModel,
-};
+// module.exports = {
+//   BlogCategory:BlogCategoryModel,
+//   BlogPost: BlogPostModel,
+// };
 
-// module.exports={
-//   BlogCategory:mongoose.model("BlogCategory",blogCategorySchema),
-//   BlogPost:mongoose.model("BlogPost",blogPostSchema)
-// }
+module.exports={
+  BlogCategory:mongoose.model("BlogCategory",blogCategorySchema),
+  BlogPost:mongoose.model("BlogPost",blogPostSchema)
+}
